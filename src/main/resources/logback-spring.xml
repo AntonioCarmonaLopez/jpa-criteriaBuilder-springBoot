@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<include
+		resource="org/springframework/boot/logging/logback/console-appender.xml" />
+	<property name="LOG_FILE" value="logs/log.log" />
+	<include
+		resource="org/springframework/boot/logging/logback/file-appender.xml" />
+	<Pattern>
+		%black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}):
+		%msg%n%throwable
+	</Pattern>
+	<root level="INFO">
+		<appender-ref ref="FILE" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+	<logger name="com.acl.empleados" level="DEBUG"></logger>
+</configuration>

@@ -2,37 +2,33 @@ package com.acl.empleados.components;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.acl.empleados.entity.Empleado;
-
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class EmpleadoService implements IEmpleadoService {
 	
-	private enum ORIGENES  {aniadir,editar};
+	private enum ORIGENES  {ADD,EDIT};
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	@Autowired
 	EmpleadoRepository repo;
-	
+
+	public EmpleadoService(EmpleadoRepository repo) {
+		this.repo = repo;
+	}
+
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
@@ -101,12 +97,12 @@ public class EmpleadoService implements IEmpleadoService {
 
 	@Override
 	public void aniadirEmpleado(Empleado emp) {
-		aniadirEditarEmpleado(emp,ORIGENES.aniadir.toString());
+		aniadirEditarEmpleado(emp,ORIGENES.ADD.toString());
 	}
 
 	@Override
 	public void editarEmpeado(Empleado emp) {
-		aniadirEditarEmpleado(emp,ORIGENES.editar.toString());
+		aniadirEditarEmpleado(emp,ORIGENES.EDIT.toString());
 	}
 
 	@Override
@@ -126,7 +122,7 @@ public class EmpleadoService implements IEmpleadoService {
 		try  {
 			empNuevo = repo.save(emp);
 		} catch (Exception e) {
-			if(origen.equals(ORIGENES.aniadir.toString())) {
+			if(origen.equals(ORIGENES.ADD.toString())) {
 				log.info("error en el metodo aniadirEmpleado");
 			} else {
 				log.info("error en el metodo editarEmpleado");

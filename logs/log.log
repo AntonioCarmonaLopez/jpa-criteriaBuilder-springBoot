@@ -1268,3 +1268,35 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
 2024-01-02T14:03:52.398+01:00  INFO 5680 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
 2024-01-02T14:03:52.399+01:00  INFO 5680 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-08-15T18:14:36.282+02:00  INFO 15532 --- [restartedMain] com.acl.empleados.EmpleadosApplication   : Starting EmpleadosApplication using Java 21.0.3 with PID 15532 (/home/antonio/git/jpa-criteriaBuilder-springBoot/target/classes started by antonio in /home/antonio/git/jpa-criteriaBuilder-springBoot)
+2024-08-15T18:14:36.283+02:00 DEBUG 15532 --- [restartedMain] com.acl.empleados.EmpleadosApplication   : Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-08-15T18:14:36.283+02:00  INFO 15532 --- [restartedMain] com.acl.empleados.EmpleadosApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T18:14:36.310+02:00  INFO 15532 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-15T18:14:36.311+02:00  INFO 15532 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-15T18:14:36.794+02:00  INFO 15532 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-15T18:14:36.820+02:00  INFO 15532 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 1 JPA repository interface.
+2024-08-15T18:14:37.094+02:00  INFO 15532 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-15T18:14:37.103+02:00  INFO 15532 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T18:14:37.103+02:00  INFO 15532 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-08-15T18:14:37.125+02:00  INFO 15532 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T18:14:37.125+02:00  INFO 15532 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 814 ms
+2024-08-15T18:14:37.149+02:00  INFO 15532 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T18:14:37.248+02:00  INFO 15532 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-08-15T18:14:37.249+02:00  INFO 15532 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T18:14:37.257+02:00  INFO 15532 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-ui'. Database available at 'jdbc:h2:mem:testdb'
+2024-08-15T18:14:37.466+02:00  INFO 15532 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-15T18:14:37.902+02:00  INFO 15532 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T18:14:38.079+02:00  WARN 15532 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-15T18:14:38.122+02:00 DEBUG 15532 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 10 mappings in 'requestMappingHandlerMapping'
+2024-08-15T18:14:38.163+02:00 DEBUG 15532 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-08-15T18:14:38.182+02:00 DEBUG 15532 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-08-15T18:14:38.199+02:00 DEBUG 15532 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-08-15T18:14:38.258+02:00  INFO 15532 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-15T18:14:38.279+02:00  INFO 15532 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-15T18:14:38.285+02:00  INFO 15532 --- [restartedMain] com.acl.empleados.EmpleadosApplication   : Started EmpleadosApplication in 2.308 seconds (process running for 2.769)
+2024-08-15T18:15:44.768+02:00  INFO 15532 --- [RMI TCP Connection(9)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-08-15T18:15:44.779+02:00  INFO 15532 --- [RMI TCP Connection(9)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T18:15:44.786+02:00  WARN 15532 --- [RMI TCP Connection(9)-127.0.0.1] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-08-15T18:15:44.786+02:00  INFO 15532 --- [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-15T18:15:44.788+02:00  INFO 15532 --- [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

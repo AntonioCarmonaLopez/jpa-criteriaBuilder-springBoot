@@ -3,7 +3,6 @@ package com.acl.empleados.components;
 
 import com.acl.empleados.entity.Empleado;
 
-
 public interface IEmpleadoService {
 
 	void aniadirEmpleado(Empleado emp);

@@ -9,5 +9,4 @@ import com.acl.empleados.entity.Empleado;
 public interface EmpleadoRepository extends JpaRepository<Empleado, Integer>{
 	Iterable<?> findByNombre(String nombre);
 	Iterable<?> findByApellido(String apellido);
-
 }

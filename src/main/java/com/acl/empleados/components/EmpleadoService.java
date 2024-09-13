@@ -14,6 +14,7 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import lombok.extern.slf4j.Slf4j;
 
+
 @Service
 @Slf4j
 public class EmpleadoService implements IEmpleadoService {

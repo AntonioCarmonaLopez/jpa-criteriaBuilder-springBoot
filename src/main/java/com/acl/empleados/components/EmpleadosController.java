@@ -2,7 +2,6 @@ package com.acl.empleados.components;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -20,8 +19,11 @@ import com.acl.empleados.entity.Empleado;
 @RequestMapping(value = "/empleado")
 public class EmpleadosController {
 
-	@Autowired
 	EmpleadoService srv;
+	
+	public EmpleadosController(EmpleadoService srv) {
+		this.srv = srv;
+	}
 
 	@GetMapping
 	public String getTestData() {

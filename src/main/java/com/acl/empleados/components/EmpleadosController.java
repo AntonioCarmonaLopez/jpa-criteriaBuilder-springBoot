@@ -29,40 +29,40 @@ public class EmpleadosController {
 	}
 
 	@GetMapping("/buscartodos")
-	public ResponseEntity<?> buscarTodos(BindingResult bindingResult) {
-		ResponseEntity<?> responseEntity = null;
-		Iterable<?> lista = null;
+	public ResponseEntity<List<Empleado>> buscarTodos(BindingResult bindingResult) {
+		ResponseEntity<List<Empleado>> responseEntity = null;
+		List<Empleado> lista = null;
 
 		lista = this.srv.buscarTodos();
 		if (lista != null) {
 			responseEntity = ResponseEntity.ok(lista);
 		} else {
-			responseEntity = validar(bindingResult);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 		return responseEntity;
 	}
 
 	@GetMapping("/buscarxnombre")
-	public ResponseEntity<?> buscarXNombre(String nombre) {
-		ResponseEntity<?> responseEntity = null;
-		Iterable<?> lista = null;
+	public ResponseEntity<List<Empleado>> buscarXNombre(String nombre) {
+		ResponseEntity<List<Empleado>> responseEntity = null;
+		List<Empleado> lista = null;
 
 		lista = this.srv.buscarEmpleadroByNombre(nombre);
 		if (lista != null) {
 			responseEntity = ResponseEntity.ok(lista);
 		} else {
-			responseEntity = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+			responseEntity = ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 
 		return responseEntity;
 	}
 
 	@GetMapping("/buscarxapellido")
-	public ResponseEntity<?> buscarEmpleadroByapellido(String apellido) {
-		ResponseEntity<?> responseEntity = null;
-		Iterable<?> lista = null;
+	public ResponseEntity<List<Empleado>> buscarEmpleadoByapellido(String apellido) {
+		ResponseEntity<List<Empleado>> responseEntity = null;
+		List<Empleado> lista = null;
 
-		lista = this.srv.buscarEmpleadroByapellido(apellido);
+		lista = this.srv.buscarEmpleadoByapellido(apellido);
 		if (lista != null) {
 			responseEntity = ResponseEntity.ok(lista);
 		} else {
@@ -87,45 +87,44 @@ public class EmpleadosController {
 	}
 
 	@PostMapping("/aniadirempleado")
-	public ResponseEntity<?> aniadirEmpleado(@RequestBody Empleado emp, BindingResult bindingResult) {
-		ResponseEntity<?> responseEntity = null;
-
-		if (bindingResult.hasErrors()) {
-			responseEntity = validar(bindingResult);
-		} else {
-			this.srv.aniadirEmpleado(emp);
+	public ResponseEntity<Empleado> aniadirEmpleado(@RequestBody Empleado emp) {
+		ResponseEntity<Empleado> responseEntity = null;
+		Empleado empleado = this.srv.aniadirEmpleado(emp);
+		if(empleado != null) {
 			responseEntity = ResponseEntity.status(HttpStatus.CREATED).body(emp);
+		} else {
+			responseEntity = ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
+		
 		return responseEntity;
 	}
 
 	@PostMapping("/editarempleado")
-	public ResponseEntity<?> editarEmpeado(@RequestBody Empleado emp, BindingResult bindingResult) {
-		ResponseEntity<?> responseEntity = null;
-		this.srv.editarEmpeado(emp);
+	public ResponseEntity<Empleado> editarEmpleado(@RequestBody Empleado emp) {
+		ResponseEntity<Empleado> responseEntity = null;
 
-		if (bindingResult.hasErrors()) {
-			responseEntity = validar(bindingResult);
+		Empleado empleado = this.srv.editarEmpleado(emp);
+		if(empleado != null) {
+			responseEntity = ResponseEntity.status(HttpStatus.OK).body(emp);
 		} else {
-			this.srv.editarEmpeado(emp);
-			responseEntity = ResponseEntity.status(HttpStatus.CREATED).body(emp);
+			responseEntity = ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 		return responseEntity;
 	}
 
 	@DeleteMapping("/borrarempleado")
-	public ResponseEntity<?> borrarPacientePorId(Integer id) {
-		ResponseEntity<?> responseEntity = null;
+	public ResponseEntity<Empleado> borrarPacientePorId(Integer id) {
+		ResponseEntity<Empleado> responseEntity = null;
 
-		if(this.srv.borrarEmpleado(id)){
+		if (this.srv.borrarEmpleado(id)) {
 			responseEntity = ResponseEntity.ok().build();
 		} else {
-			responseEntity = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+			responseEntity = ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
 		}
 		return responseEntity;
 	}
-	
+
 	private ResponseEntity<?> validar(BindingResult bindingResult) {
 		ResponseEntity<?> responseEntity = null;
 		List<ObjectError> listaErrores = null;
@@ -135,4 +134,6 @@ public class EmpleadosController {
 
 		return responseEntity;
 	}
+	
+	
 }

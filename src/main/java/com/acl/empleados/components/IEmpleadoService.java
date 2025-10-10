@@ -1,16 +1,18 @@
 package com.acl.empleados.components;
 
+import java.util.List;
+
 import com.acl.empleados.entity.Empleado;
 
 
 public interface IEmpleadoService {
 
-	void aniadirEmpleado(Empleado emp);
-	Iterable<?> buscarTodos();
-	Iterable<?> buscarEmpleadroByNombre(String nombre);
-	void editarEmpeado(Empleado emp);
+	Empleado aniadirEmpleado(Empleado emp);
+	List<Empleado> buscarTodos();
+	List<Empleado> buscarEmpleadroByNombre(String nombre);
+	Empleado editarEmpleado(Empleado emp);
 	boolean borrarEmpleado(Integer id);
-	Iterable<?> buscarEmpleadroByapellido(String apellido);
+	Iterable<?> buscarEmpleadoByapellido(String apellido);
 	Iterable<?> criteriaBuilder(Empleado emp);
 	
 }

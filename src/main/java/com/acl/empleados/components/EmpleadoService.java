@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.acl.empleados.entity.Empleado;
+import com.acl.empleados.exception.EmpleadoNotFoundException;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -32,8 +33,8 @@ public class EmpleadoService implements IEmpleadoService {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
-	public Iterable<?> buscarTodos() {
-		Iterable<?> result = null;
+	public List<Empleado> buscarTodos() {
+		List<Empleado> result = null;
 		try {
 			result = repo.findAll();
 		} catch (Exception e) {
@@ -43,10 +44,13 @@ public class EmpleadoService implements IEmpleadoService {
 	}
 
 	@Override
-	public Iterable<?> buscarEmpleadroByNombre(String nombre) {
-		Iterable<?> result = null;
+	public List<Empleado> buscarEmpleadroByNombre(String nombre) {
+		List<Empleado> result = null;
 		try {
 			result = repo.findByNombre(nombre);
+			if(result.isEmpty()){
+				throw new EmpleadoNotFoundException("Empleado no encontrado con el nombre: " + nombre);
+			}
 		} catch  (Exception e) {
 			log.info("error en el metodo buscarEmpleadroByNombre");
 		}
@@ -54,8 +58,8 @@ public class EmpleadoService implements IEmpleadoService {
 	}
 
 	@Override
-	public Iterable<?> buscarEmpleadroByapellido(String apellido) {
-		Iterable<?> result = null;
+	public List<Empleado> buscarEmpleadoByapellido(String apellido) {
+		List<Empleado> result = null;
 		try {
 			result = repo.findByApellido(apellido);
 		} catch (Exception e) {
@@ -96,13 +100,13 @@ public class EmpleadoService implements IEmpleadoService {
 	}
 
 	@Override
-	public void aniadirEmpleado(Empleado emp) {
-		aniadirEditarEmpleado(emp,ORIGENES.ANADIR.toString());
+	public Empleado aniadirEmpleado(Empleado emp) {
+		return aniadirEditarEmpleado(emp,ORIGENES.ANADIR.toString());
 	}
 
 	@Override
-	public void editarEmpeado(Empleado emp) {
-		aniadirEditarEmpleado(emp,ORIGENES.EDITAR.toString());
+	public Empleado editarEmpleado(Empleado emp) {
+		return aniadirEditarEmpleado(emp,ORIGENES.EDITAR.toString());
 	}
 
 	@Override
